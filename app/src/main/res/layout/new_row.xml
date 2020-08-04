@@ -49,6 +49,11 @@
         <variable
             name="adapter"
             type="com.liao.mvvm.adapter.GithubRepoAdapter" />
+
+        <variable
+            name="viewModel"
+            type="com.liao.mvvm.main.MainViewModel" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -126,7 +131,7 @@
                 android:id="@+id/layout_under"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                app:visibility="@{adapter.isLoading ? View.VISIBLE : View.GONE}"
                 android:layout_below="@+id/constrain_layout"
                 android:orientation="vertical">
 

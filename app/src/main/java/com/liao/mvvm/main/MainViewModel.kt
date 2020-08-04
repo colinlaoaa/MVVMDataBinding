@@ -62,6 +62,7 @@ class MainViewModel : ViewModel() {
     }
 
 
+
     override fun onCleared() {
         super.onCleared()
         Log.e("MainViewModel", "Destroyed")

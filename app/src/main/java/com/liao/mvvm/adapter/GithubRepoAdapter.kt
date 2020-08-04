@@ -2,20 +2,17 @@ package com.liao.mvvm.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.liao.mvvm.R
 import com.liao.mvvm.databinding.NewRowBinding
 import com.liao.mvvm.model.GithubRepository
-import java.nio.file.Files.find
 
 
 class GithubRepoAdapter(private val context:Context) : RecyclerView.Adapter<GithubRepoAdapter.MyViewHolder>() {
 
-    private val listItem = ArrayList<GithubRepository>()
+    private var listItem = ArrayList<GithubRepository>()
+    var isLoading = false
 
     fun setData(list: List<GithubRepository>) {
         listItem.clear()
@@ -50,10 +47,20 @@ class GithubRepoAdapter(private val context:Context) : RecyclerView.Adapter<Gith
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(listItem[position])
+
+
     }
 
-    fun onItemClicked(item: GithubRepository){
-        //Toast.makeText(context,"${item.name}",Toast.LENGTH_SHORT).show()
+
+
+    fun onItemClicked(item:GithubRepository){
+        Toast.makeText(context,"${item.name}",Toast.LENGTH_SHORT).show()
+        isLoading = !isLoading
+        //notifyDataSetChanged()
+        var posi = listItem.indexOf(item)
+        notifyItemChanged(posi)
+
+
      
 
 
